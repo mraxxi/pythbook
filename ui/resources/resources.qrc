@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/icons">
+    <file alias="add.png">icons/add_item.png</file>,
+    <file alias="delete.png">icons/delete_item.png</file>
+    </qresource>
+<qresource prefix="/qss">
+    <file alias="style.qss">stylesheets/main_style.qss</file>
+</qresource>
+</RCC>

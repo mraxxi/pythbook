@@ -7,6 +7,7 @@
         "password": "your_password"
     },
     "sqlite_db_name": "local_transactions.db",
+    "pdf_output_directory": "/home/wplus/PycharmProjects/bookkeeping/invoices_pdf",
     "categories": [
         "Groceries",
         "Utilities",
