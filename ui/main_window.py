@@ -167,6 +167,36 @@ class SettingsDialog(QDialog):
 # --- End Placeholder for SettingsDialog ---
 
 
+def _create_line_items_headers() -> QHBoxLayout:  #
+    """Create the headers for the line items table."""  #
+    headers_layout = QHBoxLayout()  #
+    headers = ["#", "Description", "Qty", "Price", "Subtotal", ""]  #
+    widths = [  #
+        config.LINE_ITEM_FIELD_WIDTHS['number'],  #
+        0,  # Description takes remaining space #
+        config.LINE_ITEM_FIELD_WIDTHS['amount'],  #
+        config.LINE_ITEM_FIELD_WIDTHS['price'],  #
+        config.LINE_ITEM_FIELD_WIDTHS['subtotal'],  #
+        config.LINE_ITEM_FIELD_WIDTHS['delete_btn']  #
+    ]
+
+    for i, header in enumerate(headers):  #
+        label = QLabel(header)  #
+        label.setAlignment(Qt.AlignCenter)  #
+
+        # Apply bold font to headers #
+        font = QFont()  #
+        font.setBold(True)  #
+        label.setFont(font)  #
+
+        if widths[i] > 0:  #
+            label.setFixedWidth(widths[i])  #
+
+        headers_layout.addWidget(label, 1 if widths[i] == 0 else 0)  #
+
+    return headers_layout  #
+
+
 class InvoiceForm(QWidget):  # Your existing InvoiceForm class
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -271,7 +301,7 @@ class InvoiceForm(QWidget):  # Your existing InvoiceForm class
         line_items_layout = QVBoxLayout()  #
 
         # Headers #
-        line_items_layout.addLayout(self._create_line_items_headers())  #
+        line_items_layout.addLayout(_create_line_items_headers())  #
 
         # Scroll area for line items #
         self.scroll_area = QScrollArea()  #
@@ -289,35 +319,6 @@ class InvoiceForm(QWidget):  # Your existing InvoiceForm class
         line_items_layout.addWidget(self.add_item_btn)  #
 
         return line_items_layout  #
-
-    def _create_line_items_headers(self) -> QHBoxLayout:  #
-        """Create the headers for the line items table."""  #
-        headers_layout = QHBoxLayout()  #
-        headers = ["#", "Description", "Qty", "Price", "Subtotal", ""]  #
-        widths = [  #
-            config.LINE_ITEM_FIELD_WIDTHS['number'],  #
-            0,  # Description takes remaining space #
-            config.LINE_ITEM_FIELD_WIDTHS['amount'],  #
-            config.LINE_ITEM_FIELD_WIDTHS['price'],  #
-            config.LINE_ITEM_FIELD_WIDTHS['subtotal'],  #
-            config.LINE_ITEM_FIELD_WIDTHS['delete_btn']  #
-        ]
-
-        for i, header in enumerate(headers):  #
-            label = QLabel(header)  #
-            label.setAlignment(Qt.AlignCenter)  #
-
-            # Apply bold font to headers #
-            font = QFont()  #
-            font.setBold(True)  #
-            label.setFont(font)  #
-
-            if widths[i] > 0:  #
-                label.setFixedWidth(widths[i])  #
-
-            headers_layout.addWidget(label, 1 if widths[i] == 0 else 0)  #
-
-        return headers_layout  #
 
     def _create_total_section(self) -> QHBoxLayout:  #
         """Create the total display section."""  #
