@@ -1,0 +1,25 @@
+{
+    "postgres": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "bookkeeping_db",
+        "user": "your_user",
+        "password": "your_password"
+    },
+    "sqlite_db_name": "local_transactions.db",
+    "categories": [
+        "Groceries",
+        "Utilities",
+        "Transport",
+        "Salary",
+        "Entertainment",
+        "Other"
+    ],
+    "payment_methods": [
+        "Cash",
+        "Credit Card",
+        "Debit Card",
+        "Bank Transfer",
+        "Other"
+    ]
+}
