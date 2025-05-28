@@ -1,0 +1,19 @@
+bookkeeping_app/
+├── main.py                   # Main application entry point
+├── ui/
+│   ├── main_window.py        # PyQt5 Main Window class
+│   ├── settings_dialog.py    # PyQt5 Settings Dialog class
+│   └── __init__.py
+├── database/
+│   ├── models.py             # SQLAlchemy models (Transaction)
+│   ├── db_handler.py         # Functions for database interactions (connect, add, sync)
+│   └── __init__.py
+├── logic/
+│   ├── app_logic.py          # Business logic (validation, orchestrating saves/syncs)
+│   └── __init__.py
+├── config/
+│   ├── config_manager.py     # Load/save application settings
+│   ├── settings.json         # Configuration file (DB credentials, etc.) - add to .gitignore
+│   └── __init__.py
+├── assets/                   # Optional: icons, etc.
+└── README.md                 # Setup and usage instructions
